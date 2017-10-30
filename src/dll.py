@@ -39,7 +39,7 @@ class DLL(object):
     def pop(self):
         """Remove and return first node of dll."""
         if not self.head:
-            raise IndexError('Empty: no value to pop.')
+            raise IndexError('Empty: no value to remove.')
         val = self.head.val
         self.head = self.head.next
         self._tally -= 1
@@ -61,7 +61,7 @@ class DLL(object):
     def shift(self):
         """Remove and return last node of dll."""
         if not self.tail:
-            raise IndexError('Empty: no value to shift.')
+            raise IndexError('Empty: no value to remove.')
         val = self.tail.val
         self.tail = self.tail.prev
         self._tally -= 1
