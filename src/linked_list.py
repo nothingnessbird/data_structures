@@ -52,25 +52,25 @@ class LinkedList(object):
         """Remove node with given value from linked list."""
         current_node = self.head
         previous_node = None
-        flag = False
         if current_node.val == val:
             self.pop()
             return
         while current_node:
             if current_node.val == val:
-                flag = True
                 previous_node.next = current_node.next
-                break
+                self._tally -= 1
+                return
             else:
                 previous_node = current_node
                 current_node = current_node.next
-        if not flag:
-            raise ValueError('That value is not in the list.')
+        raise ValueError('That value is not in the list.')
 
     def display(self):
         """Render linked list as unicode string of tuple literal."""
+        if not self.head:
+            return '()'
         current_node = self.head
-        list_string = u'('
+        list_string = '('
         while current_node:
             list_string += '{}, '.format(current_node.val)
             current_node = current_node.next
@@ -97,20 +97,27 @@ if __name__ == '__main__':
     sample_linked_list.remove(True)
     removed = sample_linked_list.display()
     length = len(sample_linked_list)
-    print('This module will create a singly linked list given iterable input.\
-            sample input: {}\
-            displayed output: {}\
-            methods:\
-                >>>sample_linked_list.push(3)\
-                >>>print(sample_linked_list)\
-                {}\
-                >>>popped_value = sample_linked_list.pop\
-                >>>print(popped_value)\
-                {}\
-                >>>sample_linked_list.search(1)\
-                {}\
-                >>>sample_linked_list.remove(True)\
-                >>>print(sample_linked_list)\
-                {}\
-                >>>len(sample_linked_list)\
-                {}'.format(sample_itr, printed, popped, searched, removed, length))
+    print('''This module will create a singly linked list given iterable input.
+            sample input: {}
+            displayed output: {}
+            methods:
+                >>>sample_linked_list.push(3)
+                >>>print(sample_linked_list)
+                {}
+                >>>popped_value = sample_linked_list.pop
+                >>>print(popped_value)
+                {}
+                >>>sample_linked_list.search(1)
+                {}
+                >>>sample_linked_list.remove(True)
+                >>>print(sample_linked_list)
+                {}
+                >>>len(sample_linked_list)
+                {}'''.format(
+        sample_itr,
+        printed,
+        pushed,
+        popped,
+        searched,
+        removed,
+        length))

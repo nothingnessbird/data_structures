@@ -41,7 +41,12 @@ class DLL(object):
         if not self.head:
             raise IndexError('Empty: no value to remove.')
         val = self.head.val
-        self.head = self.head.next
+        if len(self) == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.next
+            self.head.next.prev = None
         self._tally -= 1
         return val
 
@@ -64,31 +69,33 @@ class DLL(object):
             raise IndexError('Empty: no value to remove.')
         val = self.tail.val
         self.tail = self.tail.prev
+        if len(self) == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.tail = self.tail.prev
+            self.tail.prev.next = None
         self._tally -= 1
         return val
 
     def remove(self, val):
         """Remove node with given value from dll."""
         current_node = self.head
-        previous_node = None
-        next_node = None
-        flag = False
         if current_node.val == val:
             self.pop()
             return
+        if self.tail.val == val:
+            self.shift()
+            return
         while current_node:
             if current_node.val == val:
-                flag = True
-                previous_node.next = current_node.next
-                next_node.prev = current_node.prev
+                current_node.prev.next = current_node.next
+                current_node.next.prev = current_node.prev
                 self._tally -= 1
-                break
+                return
             else:
-                previous_node = current_node
                 current_node = current_node.next
-                next_node = current_node.next
-        if not flag:
-            raise ValueError('That value is not in the list.')
+        raise ValueError('That value is not in the list.')
 
     def __len__(self):
         """Return size of dll when using len method."""

@@ -16,7 +16,7 @@ class Deque(object):
 
     def appendleft(self, val):
         """Append a node to beginning (left) of deque."""
-        self.deque.shift(val)
+        self.deque.push(val)
 
     def pop(self):
         """Remove and return last (rightmost) node in deque."""
@@ -28,11 +28,17 @@ class Deque(object):
 
     def peek(self):
         """Return value of next node that would be popped."""
-        return self.deque.tail.val
+        try:
+            return self.deque.tail.val
+        except AttributeError:
+            return None
 
     def peekleft(self):
         """Return value of next node that would be poplefted."""
-        return self.deque.head.val
+        try:
+            return self.deque.head.val
+        except AttributeError:
+            return None
 
     def size(self):
         """Return size of deque."""
