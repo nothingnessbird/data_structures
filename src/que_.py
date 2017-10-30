@@ -16,7 +16,7 @@ class Queue(object):
 
     def dequeue(self):
         """Remove tail node of queue."""
-        return self.queue.shift()
+        return self.que_.shift()
 
     def peek(self):
         """Return value of next node to dequeue."""
