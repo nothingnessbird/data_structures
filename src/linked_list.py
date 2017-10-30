@@ -60,6 +60,7 @@ class LinkedList(object):
             if current_node.val == val:
                 flag = True
                 previous_node.next = current_node.next
+                self._tally -= 1
                 break
             else:
                 previous_node = current_node
