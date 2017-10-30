@@ -29,7 +29,7 @@ class LinkedList(object):
     def pop(self):
         """Remove and return first node of linked list."""
         if not self.head:
-            raise IndexError('Empty list: no value to pop.')
+            raise IndexError('Empty: no value to pop.')
         val = self.head.val
         self.head = self.head.next
         self._tally -= 1
