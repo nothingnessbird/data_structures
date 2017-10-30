@@ -60,12 +60,57 @@ class LinkedList(object):
             if current_node.val == val:
                 flag = True
                 previous_node.next = current_node.next
+                break
             else:
                 previous_node = current_node
                 current_node = current_node.next
         if not flag:
             raise ValueError('That value is not in the list.')
 
+    def display(self):
+        """Render linked list as unicode string of tuple literal."""
+        current_node = self.head
+        list_string = u'('
+        while current_node:
+            list_string += '{}, '.format(current_node.val)
+            current_node = current_node.next
+        list_string = list_string[:-2] + ')'
+        return list_string
+
     def __len__(self):
         """Return size of linked list when using len method."""
         return self.size()
+
+    def __str__(self):
+        """Print the linked list."""
+        return self.display()
+
+
+if __name__ == '__main__':
+    sample_itr = ['str', 1, -2.57, True, ('a', 'tuple'), ['listception']]
+    sample_linked_list = LinkedList(sample_itr)
+    printed = sample_linked_list.display()
+    sample_linked_list.push(3)
+    pushed = sample_linked_list.display()
+    popped = sample_linked_list.pop()
+    searched = sample_linked_list.search(1)
+    sample_linked_list.remove(True)
+    removed = sample_linked_list.display()
+    length = len(sample_linked_list)
+    print('This module will create a singly linked list given iterable input.\
+            sample input: {}\
+            displayed output: {}\
+            methods:\
+                >>>sample_linked_list.push(3)\
+                >>>print(sample_linked_list)\
+                {}\
+                >>>popped_value = sample_linked_list.pop\
+                >>>print(popped_value)\
+                {}\
+                >>>sample_linked_list.search(1)\
+                {}\
+                >>>sample_linked_list.remove(True)\
+                >>>print(sample_linked_list)\
+                {}\
+                >>>len(sample_linked_list)\
+                {}'.format(sample_itr, printed, popped, searched, removed, length))
