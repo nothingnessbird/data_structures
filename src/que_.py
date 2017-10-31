@@ -15,7 +15,7 @@ class Queue(object):
         self.que_.push(val)
 
     def dequeue(self):
-        """Remove tail node of queue."""
+        """Remove and return tail node of queue."""
         return self.que_.shift()
 
     def peek(self):
