@@ -410,7 +410,7 @@ Add value to heap
 new_heap.push(5)
 ```
 
-#### Runtime O(n)
+#### Runtime O(log(n))
 
 
 ### pop:
@@ -421,7 +421,7 @@ new_heap.pop()
 5
 ```
 
-#### Runtime O(n**2)
+#### Runtime O(n)
 
 
 ### _parent:
@@ -438,7 +438,7 @@ Return a list of child indexes (if present) of index
 ### _trickle_down:
 Trickle value to proper index in heap
 
-#### Runtime O(n**2)
+#### Runtime O(n)
 
 
 ## Resources

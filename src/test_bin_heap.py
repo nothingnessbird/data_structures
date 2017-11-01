@@ -5,7 +5,7 @@ import pytest
 
 @pytest.fixture
 def empty_heap():
-    """Empty list for testing."""
+    """Empty heap for testing."""
     from bin_heap import Heap
     new_heap = Heap()
     return new_heap
@@ -132,3 +132,15 @@ def test_value_error_raised_if_in_already_in_heap(empty_heap):
     with pytest.raises(ValueError):
         new_heap = Heap([1, 2])
         new_heap.push(1)
+
+
+def test_heap_pop_always_sorted_order():
+    """."""
+    from bin_heap import Heap
+    import random
+    random_nums = list(set([random.randint(0, 1000) for i in range(10)]))
+    heap = Heap(random_nums)
+    all_popped = [heap.pop() for i in range(heap._size)]
+    assert all_popped == sorted(random_nums, reverse=True)
+
+# [64, 225, 932, 39, 40, 241, 50, 563, 210, 795]
