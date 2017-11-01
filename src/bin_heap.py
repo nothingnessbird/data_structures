@@ -20,19 +20,25 @@ class Heap(object):
 
     def push(self, val):
         """Push new value to heap."""
-        self._heap_list.append(val)
-        self._size += 1
-        if self._size == 1:
-            return
-        child_index = self._size - 1
-        parent_index = self._parent(child_index)
-        while val * self._multiplier > self._heap_list[parent_index] * self._multiplier:
-            self._heap_list[child_index] = self._heap_list[parent_index]
-            self._heap_list[parent_index] = val
-            if parent_index:
-                parent_index = self._parent(parent_index)
+        if type(val) == int:
+            if val not in self._heap_list:
+                self._heap_list.append(val)
+                self._size += 1
+                if self._size == 1:
+                    return
+                child_index = self._size - 1
+                parent_index = self._parent(child_index)
+                while val * self._multiplier > self._heap_list[parent_index] * self._multiplier:
+                    self._heap_list[child_index] = self._heap_list[parent_index]
+                    self._heap_list[parent_index] = val
+                    if parent_index:
+                        parent_index = self._parent(parent_index)
+                    else:
+                        return
             else:
-                return
+                raise ValueError("Value already in heap.")
+        else:
+            raise ValueError("Non-integer value.")
 
     def pop(self):
         """Remove the top value of the heap."""

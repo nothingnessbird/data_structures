@@ -14,7 +14,7 @@ This repository will hold sample code for a number of classic data structures im
 new_list = LinkedList()
 ```
 
-#### Runtime: ???
+#### Runtime: O(1)
 
 
 ### Create instance of linked list using iterable:
@@ -25,7 +25,7 @@ l = [1, 2, 3, 4]
 new_list = LinkedList(l)
 ```
 
-#### Runtime: ???
+#### Runtime: O(n)
 
 
 ### .push:
@@ -35,7 +35,7 @@ Add a value to the head.
 new_list.push(5)
 ```
 
-#### Runtime: ???
+#### Runtime: O(1)
 
 ### .pop:
 Remove and return value from head
@@ -45,7 +45,7 @@ new_list.pop()
 5
 ```
 
-#### Runtime: ???
+#### Runtime: O(1)
 
 ### len():
 Return size of list
@@ -55,7 +55,7 @@ len(new_list)
 4
 ```
 
-#### Runtime: ???
+#### Runtime: O(1)
 
 
 ### Search for a value:
@@ -66,7 +66,7 @@ new_list.search(1)
 <__main__.Node at 0x7fc0ec598ac8>
 ```
 
-#### Runtime: ???
+#### Runtime: O(n)
 
 ### Remove a value:
 Remove a value from anywhere in list
@@ -75,7 +75,7 @@ Remove a value from anywhere in list
 new_list.remove(1)
 ```
 
-#### Runtime: ???
+#### Runtime: O(n)
 
 
 ### Print the linked list:
@@ -86,7 +86,7 @@ print(new_list)
 '(4, 3, 2)'
 ```
 
-#### Runtime: ???
+#### Runtime: O(n)
 
 
 ## Stack
@@ -283,7 +283,162 @@ Return size of queue
 
 ```
 len(new_queue)
+4
+```
 
+#### Runtime O(1)
+
+
+## Deque
+
+### Init empty:
+
+```
+Deque()
+```
+
+#### Runtime O(1)
+
+
+### Init with iterable:
+
+```
+l = [1, 2, 3, 4]
+new_deque = Deque(l)
+```
+
+#### Runtime O(n)
+
+
+### append:
+Add node to left of deque
+
+```
+new_deque.append(5)
+```
+
+#### Runtime ???
+
+### appendleft:
+Add node to right of deque
+
+```
+new_deque.appendleft(0)
+```
+
+#### Runtime ???
+
+
+### pop:
+Remove and return rightmost node
+
+```
+new_deque.pop()
+0
+```
+
+#### Runtime ???
+
+### popleft:
+Remove and return leftmost node
+
+```
+new_deque.popleft()
+5
+```
+
+#### Runtime ???
+
+
+### peek:
+Return value of next node to pop
+
+```
+new_deque.peek()
+1
+```
+
+#### Runtime ???
+
+
+### peekleft:
+Return value of next node to popleft
+
+```
+new_deque.peekleft()
+4
+```
+
+#### Runtime ???
+
+### len():
+Return size of deque
+
+```
+len(new_deque)
+4
+```
+
+#### Runtime O(1)
+
+
+## Binary Heap (min or max, demonstrating default max)
+
+### init empty:
+
+```
+Heap()
+```
+
+#### Runtime O(1)
+
+
+### init with iterable:
+
+```
+l = [1, 2, 3, 4]
+new_heap = Heap(l)
+```
+
+#### Runtime O(n)
+
+
+### push:
+Add value to heap
+
+```
+new_heap.push(5)
+```
+
+#### Runtime O(n)
+
+
+### pop:
+Remove top value from heap
+
+```
+new_heap.pop()
+5
+```
+
+#### Runtime O(n**2)
+
+
+### _parent:
+Return parent index of index
+
+#### Runtime O(1)
+
+### _children:
+Return a list of child indexes (if present) of index
+
+#### Runtime O(1)
+
+
+### _trickle_down:
+Trickle value to proper index in heap
+
+#### Runtime O(n**2)
 
 
 ## Resources
