@@ -134,13 +134,21 @@ def test_value_error_raised_if_in_already_in_heap(empty_heap):
         new_heap.push(1)
 
 
-def test_heap_pop_always_sorted_order():
-    """."""
+def test_max_heap_pop_always_sorted_order():
+    """Test that pop returns sorted values."""
     from bin_heap import Heap
     import random
     random_nums = list(set([random.randint(0, 1000) for i in range(10)]))
-    heap = Heap(random_nums)
-    all_popped = [heap.pop() for i in range(heap._size)]
+    new_heap = Heap(random_nums)
+    all_popped = [new_heap.pop() for i in range(new_heap._size)]
     assert all_popped == sorted(random_nums, reverse=True)
 
-# [64, 225, 932, 39, 40, 241, 50, 563, 210, 795]
+
+def test_min_heap_pop_always_sorted_order():
+    """Test that pop returns sorted values."""
+    from bin_heap import Heap
+    import random
+    random_nums = list(set([random.randint(0, 1000) for i in range(10)]))
+    new_heap = Heap(random_nums, 'min')
+    all_popped = [new_heap.pop() for i in range(new_heap._size)]
+    assert all_popped == sorted(random_nums)
