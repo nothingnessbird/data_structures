@@ -118,3 +118,17 @@ def test_pop_for_min_heap_smaller_than_3_values():
     from bin_heap import Heap
     new_heap = Heap([1, 2], 'min')
     assert new_heap.pop() == 1
+
+
+def test_value_error_raised_for_non_int_input(empty_heap):
+    """Test that error is raised if you input a non-integer."""
+    with pytest.raises(ValueError):
+        empty_heap.push('n')
+
+
+def test_value_error_raised_if_in_already_in_heap(empty_heap):
+    """Test that error is raised if you input a value already in the heap."""
+    from bin_heap import Heap
+    with pytest.raises(ValueError):
+        new_heap = Heap([1, 2])
+        new_heap.push(1)
