@@ -32,6 +32,7 @@ class Heap(object):
                     self._heap_list[child_index] = self._heap_list[parent_index]
                     self._heap_list[parent_index] = val
                     if parent_index:
+                        child_index = parent_index
                         parent_index = self._parent(parent_index)
                     else:
                         return
