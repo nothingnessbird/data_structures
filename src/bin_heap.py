@@ -14,7 +14,7 @@ class Heap(object):
             self._multiplier = -1
         else:
             raise ValueError("That is not an acceptable value. Try 'min'.")
-        if isinstance(iterable, (str, list, tuple)):
+        if isinstance(iterable, (list, tuple)):
             for item in iterable:
                 self.push(item)
 
@@ -76,7 +76,10 @@ class Heap(object):
     def _trickle_down(self, parent_index):
         """Trickle value down to proper place in heap."""
         children = self._children(parent_index)
-        for child in children:
-            if self._heap_list[parent_index] * self._multiplier < self._heap_list[child] * self._multiplier:
-                self._heap_list[parent_index], self._heap_list[child] = self._heap_list[child], self._heap_list[parent_index]
-                self._trickle_down(child)
+        if children:
+            child_values = [self._heap_list[child] * self._multiplier for child in children]
+            child = max(child_values)
+            child_idx = self._heap_list.index(child * self._multiplier)
+            if self._heap_list[parent_index] * self._multiplier < child:
+                self._heap_list[parent_index], self._heap_list[child_idx] = self._heap_list[child_idx], self._heap_list[parent_index]
+                self._trickle_down(child_idx)

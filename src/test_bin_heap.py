@@ -72,7 +72,7 @@ def test_popping_from_max_heap():
     test_iter = [1, 20, 4, 5, 12, 15]
     new_heap = Heap(test_iter)
     new_heap.pop()
-    assert new_heap._heap_list == [15, 5, 12, 1, 4]
+    assert new_heap._heap_list == [15, 12, 4, 1, 5]
 
 
 def test_popping_from_min_heap_returns_correct_value():
@@ -90,7 +90,7 @@ def test_popping_from_min_heap():
     test_iter = [1, 20, 4, 5, 12, 15]
     new_heap = Heap(test_iter, 'min')
     new_heap.pop()
-    assert new_heap._heap_list == [4, 12, 5, 20, 15]
+    assert new_heap._heap_list == [4, 5, 15, 20, 12]
 
 
 def test_value_error_raised_when_popping_from_empty_heap(empty_heap):
