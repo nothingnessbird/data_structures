@@ -22,7 +22,7 @@ class Graph(object):
 
     def add_edge(self, val, edge):
         """Add an edge to a node, create node if not exists."""
-        if (val, edge) not in self._edges:
+        if [val, edge] not in self._edges:
             if self.has_node(val) and self.has_node(edge):
                 self._graph[val].append(edge)
             elif self.has_node(val) and not self.has_node(edge):
@@ -35,7 +35,7 @@ class Graph(object):
                 self.add_node(val)
                 self.add_node(edge)
                 self._graph[val].append(edge)
-            self._edges.append((val, edge))
+            self._edges.append([val, edge])
 
     def nodes(self):
         """Return list of all nodes in graph."""
@@ -54,14 +54,14 @@ class Graph(object):
                     edges.remove(val)
                 except ValueError:
                     continue
-            self._edges = [edge for edge in self._edges if val not in edge]
+            self._edges = [edge for edge in self._edges if val not in edge]  # lambda filter
         except KeyError:
             raise ValueError("Value not in graph.")
 
     def del_edge(self, val1, val2):
         """Remove an edge from the graph."""
         try:
-            self._edges.remove((val1, val2))
+            self._edges.remove([val1, val2])
             self._graph[val1].remove(val2)
         except ValueError:
             raise ValueError("Edge not in graph.")

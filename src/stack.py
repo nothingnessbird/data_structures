@@ -1,6 +1,6 @@
 """Create stack data structure."""
 
-from linked_list.py import LinkedList
+from linked_list import LinkedList
 
 
 class Stack(object):
